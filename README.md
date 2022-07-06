@@ -3,6 +3,10 @@
 My dotfiles. Mostly for Neovim and Kitty.
 What is nice about this is that I use a Lua-only config for Neovim. So far my setup is very minimal so I think it makes for a great starting point.
 
+## Screenshots
+
+![Screenshot of Neovim with LSP](https://i.imgur.com/ltGTzpN.jpg)
+
 ## Installing
 
 Place these in ~/.config
