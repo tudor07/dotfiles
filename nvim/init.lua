@@ -2,6 +2,7 @@
 
 -- use space as <leader> key
 vim.g.mapleader = ' '
+
 vim.o.updatetime = 500
 -- enable mouse
 vim.opt.mouse='a'
@@ -26,6 +27,9 @@ vim.g.nord_contrast = true
 vim.g.nord_borders = true
 vim.g.nord_enable_sidebar_background = true
 vim.g.nord_italic = false
+
+-- configure custom keymaps
+require "tudor.keymap"
 
 -- install plugins
 require "tudor.plugins"

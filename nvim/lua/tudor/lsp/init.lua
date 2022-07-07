@@ -4,7 +4,7 @@ if not has_lsp then
   return
 end
 
--- Keyboard mappings
+-- Diagnostics mappings
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -127,6 +127,7 @@ require("flutter-tools").setup {
 
 -- Lua
 lspconfig.sumneko_lua.setup {
+  on_attach = on_attach,
   settings = {
     Lua = {
       runtime = {
