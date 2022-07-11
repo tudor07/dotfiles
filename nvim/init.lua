@@ -3,7 +3,7 @@
 -- use space as <leader> key
 vim.g.mapleader = ' '
 
-vim.o.updatetime = 500
+vim.o.updatetime = 800
 -- enable mouse
 vim.opt.mouse='a'
 
@@ -19,20 +19,19 @@ vim.opt.number = true
 vim.opt.list = true
 vim.opt.listchars="tab:>\\ ,trail:·,nbsp:+,eol:↵"
 
--- set theme
+-- set theme/style configs
 vim.o.termguicolors = true
-vim.cmd[[colorscheme tokyonight]]
-vim.g.tokyonight_style = "dark"
-vim.g.nord_contrast = true
-vim.g.nord_borders = true
-vim.g.nord_enable_sidebar_background = true
-vim.g.nord_italic = false
+vim.cmd[[colorscheme melange]]
+vim.o.cursorline = true
 
 -- configure custom keymaps
 require "tudor.keymap"
 
 -- install plugins
 require "tudor.plugins"
+
+-- setup Feline status line
+require "tudor.feline"
 
 -- configure LSP
 require "tudor.lsp"

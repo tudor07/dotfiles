@@ -32,8 +32,7 @@ return packer.startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
 
   -- Theme
-  use 'shaunsingh/nord.nvim'
-  use 'folke/tokyonight.nvim'
+  use "savq/melange"
 
   -- Tree folder structure 
   use {
@@ -51,12 +50,11 @@ return packer.startup(function(use)
   }
 
   -- status bar
+  use 'feline-nvim/feline.nvim'
+  -- shows code location in status bar
   use {
-    'feline-nvim/feline.nvim',
-    config = function()
-      require('feline').setup()
-      -- require('feline').use_theme('Nord')
-    end,
+	  'SmiteshP/nvim-gps',
+	  requires = 'nvim-treesitter/nvim-treesitter'
   }
 
   -- Telescope plugin: popup window with actions
