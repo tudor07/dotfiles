@@ -23,3 +23,6 @@ map("n", "<leader>cb", "<cmd>%bd <bar> e# <bar> bd# <cr>", { silent = true })
 -- NvimTree
 -- (t)oggle Nvim(T)ree
 map("n", "<leader>tt", "<cmd>NvimTreeToggle<cr>", { silent = true })
+
+-- (g)it (b)lame
+map("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", { silent = true })

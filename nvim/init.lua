@@ -3,7 +3,7 @@
 -- use space as <leader> key
 vim.g.mapleader = ' '
 
-vim.o.updatetime = 800
+vim.o.updatetime = 400
 -- enable mouse
 vim.opt.mouse='a'
 
@@ -23,6 +23,7 @@ vim.opt.listchars="tab:>\\ ,trail:·,nbsp:+,eol:↵"
 vim.o.termguicolors = true
 vim.cmd[[colorscheme melange]]
 vim.o.cursorline = true
+vim.o.laststatus = 3
 
 -- configure custom keymaps
 require "tudor.keymap"
@@ -41,3 +42,6 @@ require "tudor.dap"
 
 -- configure Telescope
 require "tudor.telescope"
+
+-- configure Git stuff
+require "tudor.git"
