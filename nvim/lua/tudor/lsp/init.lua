@@ -47,6 +47,7 @@ local flutter_on_attach = function(client, bufnr)
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', 'hr', '<cmd>FlutterReload<cr>', bufopts)
   vim.keymap.set('n', 'fo', '<cmd>FlutterOutlineToggle<cr>', bufopts)
+  vim.keymap.set('n', '<leader>cf', '<cmd>DartFmt<cr>', bufopts)
 end
 
 -- Setup each LSP
@@ -118,6 +119,7 @@ require("flutter-tools").setup {
     settings = {
       showTodos = true,
       completeFunctionCalls = true,
+      analysisExcludedFolders = {"/Users/tudorwork/dev/flutter/.pub-cache"},
       renameFilesWithClasses = "prompt", -- "always"
       enableSnippets = true,
     }

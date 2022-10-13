@@ -31,6 +31,9 @@ return packer.startup(function(use)
   -- Syntax highlight
   use 'nvim-treesitter/nvim-treesitter'
 
+  -- Highlight current scope
+  use 'lukas-reineke/indent-blankline.nvim'
+
   -- Theme
   use "savq/melange"
 
@@ -47,6 +50,16 @@ return packer.startup(function(use)
   use {
     'romgrk/barbar.nvim',
     requires = {'kyazdani42/nvim-web-devicons'}
+  }
+
+  -- better scrolling
+  use {
+    'karb94/neoscroll.nvim',
+    config = function()
+      require('neoscroll').setup({
+        mappings = {'<C-u>', '<C-d>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+      })
+    end
   }
 
   -- status bar

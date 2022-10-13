@@ -7,6 +7,9 @@ vim.o.updatetime = 400
 -- enable mouse
 vim.opt.mouse='a'
 
+-- change scrolling speed
+vim.o.scroll = 15
+
 -- set Tab = 2 spaces
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -17,7 +20,7 @@ vim.opt.number = true
 
 -- show invisible characters
 vim.opt.list = true
-vim.opt.listchars="tab:>\\ ,trail:·,nbsp:+,eol:↵"
+vim.opt.listchars="tab:>\\ ,trail:·,space:·,nbsp:+,eol:↵"
 
 -- set theme/style configs
 vim.o.termguicolors = true
@@ -45,3 +48,6 @@ require "tudor.telescope"
 
 -- configure Git stuff
 require "tudor.git"
+
+-- configure indent-blankline (highlights current selected context)
+require "tudor.blankline"
