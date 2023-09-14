@@ -5,8 +5,6 @@ local map = require("utils").map
 -- Telescope keymaps
 map("n", "<C-p>", "<cmd>Telescope find_files<cr>", { silent = true })
 map("n", "<C-f>", "<cmd>Telescope live_grep<cr>", { silent = true })
--- (f)ind (f)iles
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { silent = true })
 -- (f)ind (b)uffers
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { silent = true })
 -- (f)ind (h)elp
@@ -27,6 +25,20 @@ map("n", "<leader>cb", "<cmd>bp <bar> sp <bar> bn <bar> bd <cr>", { silent = tru
 -- NvimTree
 -- (t)oggle Nvim(T)ree
 map("n", "<leader>tt", "<cmd>NvimTreeToggle<cr>", { silent = true })
+-- (f)ind (f)iles
+map("n", "<leader>ff", "<cmd>NvimTreeFindFile<cr>", { silent = true })
 
 -- (g)it (b)lame
 map("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", { silent = true })
+
+-- Debug
+-- (t)oggle (b)reakpoint
+vim.keymap.set('n', '<leader>tb', ':lua require("dap").toggle_breakpoint()<CR>')
+-- (d)ebug (c)ontinue
+vim.keymap.set('n', '<leader>dc', ':lua require("dap").continue()<CR>')
+-- (d)ebug step (o)ver
+vim.keymap.set('n', '<leader>do', ':lua require("dap").step_over()<CR>')
+-- (d)ebug step (i)nside
+vim.keymap.set('n', '<leader>di', ':lua require("dap").step_ito()<CR>')
+-- (d)ebug (e)val
+vim.keymap.set('v', '<leader>de', 'lua require("dapui").eval()<CR>')

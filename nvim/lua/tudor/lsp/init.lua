@@ -13,7 +13,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Generic mappings for all languages
 -- Use an on_attach function to only map the following keys
@@ -39,7 +39,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
 end
 
 -- Custom Flutter mappings
@@ -81,7 +81,12 @@ require("flutter-tools").setup {
   },
   debugger = {
     enabled = true,
-    --run_via_dap = true,
+    run_via_dap = false,
+    exception_breakpoints = {},
+    register_configurations = function(_)
+      require("dap").configurations.dart = {}
+      require("dap.ext.vscode").load_launchjs()
+    end,
   },
   widget_guides = {
     enabled = true,
@@ -119,7 +124,6 @@ require("flutter-tools").setup {
     settings = {
       showTodos = true,
       completeFunctionCalls = true,
-      analysisExcludedFolders = {"/Users/tudorwork/dev/flutter/.pub-cache"},
       renameFilesWithClasses = "prompt", -- "always"
       enableSnippets = true,
     }
@@ -128,7 +132,7 @@ require("flutter-tools").setup {
 -- finish Flutter
 
 -- Lua
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   on_attach = on_attach,
   settings = {
     Lua = {

@@ -27,6 +27,15 @@ vim.o.termguicolors = true
 vim.cmd[[colorscheme melange]]
 vim.o.cursorline = true
 vim.o.laststatus = 3
+-- small fix to theme colors
+local id = vim.api.nvim_create_augroup('HighlightOverrides', {})
+vim.api.nvim_create_autocmd('BufEnter', {
+    group = id,
+    pattern = '*',
+    callback = function()
+        vim.api.nvim_set_hl(0, 'Whitespace', { link = 'IndentBlanklineChar' })
+    end,
+})
 
 -- configure custom keymaps
 require "tudor.keymap"

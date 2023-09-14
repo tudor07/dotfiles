@@ -29,7 +29,16 @@ return packer.startup(function(use)
   use 'nvim-lua/plenary.nvim' -- Useful lua functions used by lots of plugins
 
   -- Syntax highlight
-  use 'nvim-treesitter/nvim-treesitter'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('nvim-treesitter').setup {
+        ensure_installed = {'dart'},
+        sync_install = false,
+        auto_install = true,
+      }
+    end
+  }
 
   -- Highlight current scope
   use 'lukas-reineke/indent-blankline.nvim'
@@ -64,11 +73,24 @@ return packer.startup(function(use)
 
   -- status bar
   use 'feline-nvim/feline.nvim'
-  -- shows code location in status bar
-  use {
-	  'SmiteshP/nvim-gps',
-	  requires = 'nvim-treesitter/nvim-treesitter'
-  }
+
+  -- shows code context in winbar
+  use({
+    "utilyre/barbecue.nvim",
+    tag = "*",
+    requires = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    config = function()
+      require("barbecue").setup({
+        symbols = {
+          separator = ">"
+        },
+        kinds = false
+      })
+    end,
+  })
 
   -- Telescope plugin: popup window with actions
   use {
@@ -85,6 +107,8 @@ return packer.startup(function(use)
 
   -- Debug
   use 'mfussenegger/nvim-dap'
+  -- Debug UI
+  use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
 
   -- Dart
   use 'dart-lang/dart-vim-plugin'
