@@ -53,13 +53,10 @@ end
 -- Setup each LSP
 
 -- C#
-local pid = vim.fn.getpid()
-local omnisharp_bin = "/Users/tudor/dev/omnisharp-osx/run"
-
-lspconfig.omnisharp.setup{
+lspconfig.omnisharp.setup {
+    cmd = { "dotnet", "/Users/tudor/dev/omnisharp-osx-arm64-net6.0/OmniSharp.dll" },
     on_attach = on_attach,
     capabilities = capabilities,
-    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
 }
 -- finish C#
 

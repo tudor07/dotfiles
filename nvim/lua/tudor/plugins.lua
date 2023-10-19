@@ -32,10 +32,11 @@ return packer.startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     config = function()
-      require('nvim-treesitter').setup {
+      require('nvim-treesitter.configs').setup {
         ensure_installed = {'dart'},
         sync_install = false,
         auto_install = true,
+        ignore_install = {},
       }
     end
   }
@@ -43,8 +44,8 @@ return packer.startup(function(use)
   -- Highlight current scope
   use 'lukas-reineke/indent-blankline.nvim'
 
-  -- Theme
-  use "savq/melange"
+  -- theme
+  use "xero/miasma.nvim"
 
   -- Tree folder structure 
   use {
@@ -53,11 +54,14 @@ return packer.startup(function(use)
       require('nvim-tree').setup()
     end,
   }
-  use 'kyazdani42/nvim-web-devicons' -- nice icons in folder tree
+
+  -- nice icons in folder tree
+  use 'kyazdani42/nvim-web-devicons'
 
   -- tab bars
   use {
-    'romgrk/barbar.nvim',
+    'akinsho/bufferline.nvim',
+    tag = '*',
     requires = {'kyazdani42/nvim-web-devicons'}
   }
 
@@ -72,7 +76,7 @@ return packer.startup(function(use)
   }
 
   -- status bar
-  use 'feline-nvim/feline.nvim'
+  use 'freddiehaddad/feline.nvim'
 
   -- shows code context in winbar
   use({

@@ -17,8 +17,8 @@ map("n", "<C-s>", "<cmd>Telescope lsp_document_symbols<cr>", { silent = true })
 map("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>", { silent = true })
 
 -- Buffers
--- (d)elete all (b)uffers except current one
-map("n", "<leader>db", "<cmd>%bd <bar> e# <bar> bd# <cr>", { silent = true })
+-- (k)ill all (b)uffers except current one
+map("n", "<leader>kb", "<cmd>BufferLineCloseOthers<cr>", { silent = true })
 -- (c)lose current (b)uffer (while keeping the window)
 map("n", "<leader>cb", "<cmd>bp <bar> sp <bar> bn <bar> bd <cr>", { silent = true })
 
@@ -42,3 +42,4 @@ vim.keymap.set('n', '<leader>do', ':lua require("dap").step_over()<CR>')
 vim.keymap.set('n', '<leader>di', ':lua require("dap").step_ito()<CR>')
 -- (d)ebug (e)val
 vim.keymap.set('v', '<leader>de', 'lua require("dapui").eval()<CR>')
+

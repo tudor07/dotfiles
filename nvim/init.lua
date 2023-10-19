@@ -9,6 +9,8 @@ vim.opt.mouse='a'
 
 -- change scrolling speed
 vim.o.scroll = 15
+-- make sure 20 lines always visible when scrolling
+vim.o.scrolloff = 20
 
 -- set Tab = 2 spaces
 vim.opt.tabstop = 2
@@ -18,13 +20,18 @@ vim.opt.expandtab = true
 -- show line number
 vim.opt.number = true
 
+-- search settings
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 -- show invisible characters
 vim.opt.list = true
 vim.opt.listchars="tab:>\\ ,trail:·,space:·,nbsp:+,eol:↵"
 
 -- set theme/style configs
 vim.o.termguicolors = true
-vim.cmd[[colorscheme melange]]
+vim.o.background = "dark"
+vim.cmd[[colorscheme miasma]]
 vim.o.cursorline = true
 vim.o.laststatus = 3
 -- small fix to theme colors
@@ -45,6 +52,9 @@ require "tudor.plugins"
 
 -- setup Feline status line
 require "tudor.feline"
+
+-- setup buffers
+require "tudor.buffer"
 
 -- configure LSP
 require "tudor.lsp"

@@ -1,6 +1,33 @@
-require("indent_blankline").setup {
-    show_end_of_line = true,
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = true,
+local status, ibl = pcall(require, "ibl")
+if not status then
+  return
+end
+
+local status_hooks, hooks = pcall(require, "ibl.hooks")
+if not status_hooks then
+  return
+end
+
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+  
+end)
+
+local highlight = {
+    "CurrentScope",
+}
+
+-- create the highlight groups in the highlight setup hook, so they are reset
+-- every time the colorscheme changes
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+    vim.api.nvim_set_hl(0, "CurrentScope", { fg = "#F6D5A4" })
+end)
+
+ibl.setup {
+  scope = {
+    char = "|",
+    highlight = highlight,
+  },
+  indent = {
+    char = "|"
+  }
 }
