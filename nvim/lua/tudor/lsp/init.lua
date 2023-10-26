@@ -5,7 +5,7 @@ if not has_lsp then
 end
 
 -- Diagnostics mappings
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -24,7 +24,7 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -44,7 +44,7 @@ end
 
 -- Custom Flutter mappings
 local flutter_on_attach = function(client, bufnr)
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'hr', '<cmd>FlutterReload<cr>', bufopts)
   vim.keymap.set('n', 'fo', '<cmd>FlutterOutlineToggle<cr>', bufopts)
   vim.keymap.set('n', '<leader>cf', '<cmd>DartFmt<cr>', bufopts)
@@ -54,15 +54,11 @@ end
 
 -- C#
 lspconfig.omnisharp.setup {
-    cmd = { "dotnet", "/Users/tudor/dev/omnisharp-osx-arm64-net6.0/OmniSharp.dll" },
-    on_attach = on_attach,
-    capabilities = capabilities,
+  cmd = { "dotnet", "/Users/tudor/dev/omnisharp-osx-arm64-net6.0/OmniSharp.dll" },
+  on_attach = on_attach,
+  capabilities = capabilities,
 }
 -- finish C#
-
--- Dart
---  lspconfig.dartls.setup{}
--- finish Dart
 
 -- Flutter
 require("flutter-tools").setup {
@@ -90,20 +86,20 @@ require("flutter-tools").setup {
   },
   closing_tags = {
     highlight = "WarningMsg", -- highlight for the closing tag
-    prefix = ">", -- character to use for close tag e.g. > Widget
-    enabled = true -- set to false to disable
+    prefix = ">",             -- character to use for close tag e.g. > Widget
+    enabled = true            -- set to false to disable
   },
   dev_log = {
     enabled = true,
     open_cmd = "tabedit", -- command to use to open the log buffer
   },
   dev_tools = {
-    autostart = false, -- autostart devtools server if not detected
+    autostart = false,         -- autostart devtools server if not detected
     auto_open_browser = false, -- Automatically opens devtools in the browser
   },
   outline = {
     open_cmd = "30vnew", -- command to use to open the outline buffer
-    auto_open = false -- if true this will open the outline automatically when it is first populated
+    auto_open = false    -- if true this will open the outline automatically when it is first populated
   },
   lsp = {
     color = { -- show the derived colours for dart variables
@@ -114,8 +110,8 @@ require("flutter-tools").setup {
       virtual_text_str = "■", -- the virtual text character to highlight
     },
     on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
-        flutter_on_attach(client, bufnr)
+      on_attach(client, bufnr)
+      flutter_on_attach(client, bufnr)
     end,
     capabilities = capabilities,
     settings = {
@@ -139,7 +135,7 @@ lspconfig.lua_ls.setup {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -155,11 +151,19 @@ lspconfig.lua_ls.setup {
 -- finish Lua
 
 -- nvim-cmp setup
-local cmp = require 'cmp'
+local has_cmp, cmp = pcall(require, 'cmp')
+if not has_cmp then
+  return
+end
+
 cmp.setup {
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
   snippet = {
     expand = function(args)
-      require'luasnip'.lsp_expand(args.body)
+      require 'luasnip'.lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({

@@ -8,10 +8,6 @@ if not status_hooks then
   return
 end
 
-hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-  
-end)
-
 local highlight = {
     "CurrentScope",
 }
@@ -19,15 +15,15 @@ local highlight = {
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-    vim.api.nvim_set_hl(0, "CurrentScope", { fg = "#F6D5A4" })
+    vim.api.nvim_set_hl(0, "CurrentScope", { fg = "#F43E5C" })
 end)
 
 ibl.setup {
   scope = {
-    char = "|",
+    char = "│",
     highlight = highlight,
   },
   indent = {
-    char = "|"
+    char = "│"
   }
 }

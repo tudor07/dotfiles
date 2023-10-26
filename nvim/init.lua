@@ -5,7 +5,7 @@ vim.g.mapleader = ' '
 
 vim.o.updatetime = 400
 -- enable mouse
-vim.opt.mouse='a'
+vim.opt.mouse = 'a'
 
 -- change scrolling speed
 vim.o.scroll = 15
@@ -26,23 +26,14 @@ vim.opt.smartcase = true
 
 -- show invisible characters
 vim.opt.list = true
-vim.opt.listchars="tab:>\\ ,trail:·,space:·,nbsp:+,eol:↵"
+vim.opt.listchars = "tab:>\\ ,trail:·,space:·,nbsp:+,eol:↵"
 
 -- set theme/style configs
 vim.o.termguicolors = true
 vim.o.background = "dark"
-vim.cmd[[colorscheme miasma]]
+vim.cmd [[colorscheme horizon]]
 vim.o.cursorline = true
 vim.o.laststatus = 3
--- small fix to theme colors
-local id = vim.api.nvim_create_augroup('HighlightOverrides', {})
-vim.api.nvim_create_autocmd('BufEnter', {
-    group = id,
-    pattern = '*',
-    callback = function()
-        vim.api.nvim_set_hl(0, 'Whitespace', { link = 'IndentBlanklineChar' })
-    end,
-})
 
 -- configure custom keymaps
 require "tudor.keymap"
@@ -70,3 +61,9 @@ require "tudor.git"
 
 -- configure indent-blankline (highlights current selected context)
 require "tudor.blankline"
+
+-- file type specific configurations
+require "tudor.filetype_config"
+
+-- theme related settings
+require "tudor.theme"

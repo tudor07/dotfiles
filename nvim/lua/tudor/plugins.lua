@@ -1,9 +1,10 @@
 local fn = vim.fn
 
 -- Automatically install packer
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  PACKER_BOOTSTRAP = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path })
   print("Installing packer close and reopen Neovim...")
 end
 -- Use a protected call so we don't error out on first use
@@ -14,26 +15,26 @@ end
 
 -- Have packer use a popup window
 packer.init({
-    display = {
-      open_fn = function()
-        return require('packer.util').float({ border = 'single' })
-      end
-    }
+  display = {
+    open_fn = function()
+      return require('packer.util').float({ border = 'single' })
+    end
   }
+}
 )
 
 -- Install your plugins here
 return packer.startup(function(use)
   -- My plugins here
   use 'wbthomason/packer.nvim' -- Have packer manage itself
-  use 'nvim-lua/plenary.nvim' -- Useful lua functions used by lots of plugins
+  use 'nvim-lua/plenary.nvim'  -- Useful lua functions used by lots of plugins
 
   -- Syntax highlight
   use {
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = {'dart'},
+        ensure_installed = { 'dart' },
         sync_install = false,
         auto_install = true,
         ignore_install = {},
@@ -45,9 +46,12 @@ return packer.startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'
 
   -- theme
-  use "xero/miasma.nvim"
+  use 'akinsho/horizon.nvim'
 
-  -- Tree folder structure 
+  -- dim inactive windows
+  use 'sunjon/shade.nvim'
+
+  -- Tree folder structure
   use {
     'kyazdani42/nvim-tree.lua',
     config = function()
@@ -62,7 +66,7 @@ return packer.startup(function(use)
   use {
     'akinsho/bufferline.nvim',
     tag = '*',
-    requires = {'kyazdani42/nvim-web-devicons'}
+    requires = { 'kyazdani42/nvim-web-devicons' }
   }
 
   -- better scrolling
@@ -70,7 +74,7 @@ return packer.startup(function(use)
     'karb94/neoscroll.nvim',
     config = function()
       require('neoscroll').setup({
-        mappings = {'<C-u>', '<C-d>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+        mappings = { '<C-u>', '<C-d>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
       })
     end
   }
@@ -101,24 +105,24 @@ return packer.startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
   }
-  use {'nvim-telescope/telescope-ui-select.nvim' }
-  use {'nvim-telescope/telescope-dap.nvim' }
+  use { 'nvim-telescope/telescope-ui-select.nvim' }
+  use { 'nvim-telescope/telescope-dap.nvim' }
 
   -- LSP plugins
   use 'neovim/nvim-lspconfig' -- LSP configs
-  use 'hrsh7th/nvim-cmp' -- Autocomplete engine
-  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'hrsh7th/nvim-cmp'      -- Autocomplete engine
+  use 'hrsh7th/cmp-nvim-lsp'  -- LSP source for nvim-cmp
 
   -- Debug
   use 'mfussenegger/nvim-dap'
   -- Debug UI
-  use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
+  use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
 
   -- Dart
   use 'dart-lang/dart-vim-plugin'
 
   -- Flutter
-  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+  use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- Snippets
   use 'L3MON4D3/LuaSnip'
@@ -133,7 +137,7 @@ return packer.startup(function(use)
       vim.g.ale_sign_info = '·'
       vim.g.ale_sign_style_error = '·'
       vim.g.ale_sign_style_warning = '·'
-      vim.g.ale_linters = {['cs'] = {'OmniSharp'}}
+      vim.g.ale_linters = { ['cs'] = { 'OmniSharp' } }
     end
   }
 
@@ -146,4 +150,3 @@ return packer.startup(function(use)
     require('packer').sync()
   end
 end)
-

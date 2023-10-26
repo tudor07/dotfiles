@@ -3,23 +3,23 @@ if not status then
   return
 end
 
-local status, vi_mode = pcall(require, 'feline.providers.vi_mode')
-if not status then
+local status_vi_mode, vi_mode = pcall(require, 'feline.providers.vi_mode')
+if not status_vi_mode then
   return
 end
 
-local miasma_colors = {
-  fg = "#c2c2b0",
-  bg = "#1C1C1C",
-  green = "#5f875f",
-  yellow = "#b36d43",
-  purple = "#bb7744",
-  orange = "#d19a66",
-  peanut = "#f6d5a4",
-  red = "#685742",
-  aqua = "#61afef",
-  darkblue = "#313131",
-  dark_red = "#f75f5f",
+local theme_colors = {
+  fg = "#FAB28E",
+  bg = "#16161C",
+  green = "#27D796",
+  yellow = "#FAC29A",
+  purple = "#B877DB",
+  orange = "#FAB795",
+  peanut = "#F09383",
+  red = "#F43E5C",
+  aqua = "#21BFC2",
+  darkblue = "#2E303E",
+  dark_red = "#E9436F",
 }
 
 local vi_mode_colors = {
@@ -233,6 +233,6 @@ local components = {
 
 feline.setup({
   components = components,
-  theme = miasma_colors,
+  theme = theme_colors,
   vi_mode_colors = vi_mode_colors,
 })
