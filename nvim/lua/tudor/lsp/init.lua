@@ -59,15 +59,6 @@ require("roslyn").setup({
     capabilities = capabilities,
   },
 })
--- lspconfig.omnisharp.setup {
---   cmd = { "dotnet", "/Users/tudor/dev/omnisharp-osx-arm64-net6.0/OmniSharp.dll" },
---   handlers = {
---     ["textDocument/definition"] = require('omnisharp_extended').handler,
---   },
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
--- finish C#
 
 -- Typescript
 lspconfig.ts_ls.setup {
