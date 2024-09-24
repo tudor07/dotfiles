@@ -15,7 +15,7 @@ local highlight = {
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-    vim.api.nvim_set_hl(0, "CurrentScope", { fg = "#F43E5C" })
+    vim.api.nvim_set_hl(0, "CurrentScope", { fg = "#BDBFCB" })
 end)
 
 ibl.setup {

@@ -53,13 +53,39 @@ end
 -- Setup each LSP
 
 -- C#
-lspconfig.omnisharp.setup {
-  cmd = { "dotnet", "/Users/tudor/dev/omnisharp-osx-arm64-net6.0/OmniSharp.dll" },
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
+require("roslyn").setup({
+  config = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  },
+})
+-- lspconfig.omnisharp.setup {
+--   cmd = { "dotnet", "/Users/tudor/dev/omnisharp-osx-arm64-net6.0/OmniSharp.dll" },
+--   handlers = {
+--     ["textDocument/definition"] = require('omnisharp_extended').handler,
+--   },
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
 -- finish C#
 
+-- Typescript
+lspconfig.ts_ls.setup {
+  on_attach = on_attach,
+}
+-- finish Typescript
+
+-- CSS
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+lspconfig.cssls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+lspconfig.cssmodules_ls.setup {
+  on_attach = on_attach,
+}
+-- finish CSS
+--
 -- Flutter
 require("flutter-tools").setup {
   ui = {
@@ -161,6 +187,9 @@ cmp.setup {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
+  formatting = {
+    format = require('lspkind').cmp_format()
+  },
   snippet = {
     expand = function(args)
       require 'luasnip'.lsp_expand(args.body)
@@ -180,4 +209,3 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-

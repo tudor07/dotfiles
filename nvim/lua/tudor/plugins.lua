@@ -34,10 +34,13 @@ return packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'dart' },
+        ensure_installed = { 'c_sharp', 'dart' },
         sync_install = false,
         auto_install = true,
         ignore_install = {},
+        highlight = {
+          enable = true,
+        },
       }
     end
   }
@@ -46,7 +49,8 @@ return packer.startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'
 
   -- theme
-  use 'akinsho/horizon.nvim'
+  use 'yorumicolors/yorumi.nvim'
+  use { 'catppuccin/nvim', as = 'catppuccin' }
 
   -- dim inactive windows
   use 'sunjon/shade.nvim'
@@ -61,6 +65,9 @@ return packer.startup(function(use)
 
   -- nice icons in folder tree
   use 'kyazdani42/nvim-web-devicons'
+
+  -- nice icons in Autocomplete
+  use 'onsails/lspkind.nvim'
 
   -- tab bars
   use {
@@ -116,7 +123,10 @@ return packer.startup(function(use)
   -- Debug
   use 'mfussenegger/nvim-dap'
   -- Debug UI
-  use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
+  use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' } }
+
+  -- C#
+  use 'seblj/roslyn.nvim'
 
   -- Dart
   use 'dart-lang/dart-vim-plugin'
@@ -132,8 +142,8 @@ return packer.startup(function(use)
   use {
     'dense-analysis/ale',
     config = function()
-      vim.g.ale_sign_error = '•'
-      vim.g.ale_sign_warning = '•'
+      vim.g.ale_sign_error = '✘'
+      vim.g.ale_sign_warning = '⚠'
       vim.g.ale_sign_info = '·'
       vim.g.ale_sign_style_error = '·'
       vim.g.ale_sign_style_warning = '·'

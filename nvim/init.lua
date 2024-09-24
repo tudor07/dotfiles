@@ -31,7 +31,7 @@ vim.opt.listchars = "tab:>\\ ,trail:·,space:·,nbsp:+,eol:↵"
 -- set theme/style configs
 vim.o.termguicolors = true
 vim.o.background = "dark"
-vim.cmd [[colorscheme horizon]]
+vim.cmd [[colorscheme yorumi]]
 vim.o.cursorline = true
 vim.o.laststatus = 3
 

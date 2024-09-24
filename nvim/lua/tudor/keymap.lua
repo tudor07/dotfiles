@@ -21,6 +21,10 @@ map("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>", { silent = true })
 map("n", "<leader>kb", "<cmd>BufferLineCloseOthers<cr>", { silent = true })
 -- (c)lose current (b)uffer (while keeping the window)
 map("n", "<leader>cb", "<cmd>bp <bar> sp <bar> bn <bar> bd <cr>", { silent = true })
+-- next buffer (Alt+Right)
+map("n", "<Esc>f", "<cmd>BufferLineCycleNext<cr>", { silent = true })
+-- prev buffer (Alt+Left)
+map("n", "<Esc>b", "<cmd>BufferLineCyclePrev<cr>", { silent = true })
 
 -- NvimTree
 -- (t)oggle Nvim(T)ree

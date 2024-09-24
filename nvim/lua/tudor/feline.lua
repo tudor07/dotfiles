@@ -9,17 +9,17 @@ if not status_vi_mode then
 end
 
 local theme_colors = {
-  fg = "#FAB28E",
-  bg = "#16161C",
-  green = "#27D796",
-  yellow = "#FAC29A",
-  purple = "#B877DB",
-  orange = "#FAB795",
-  peanut = "#F09383",
-  red = "#F43E5C",
-  aqua = "#21BFC2",
-  darkblue = "#2E303E",
-  dark_red = "#E9436F",
+  fg = "#BDBFCB",
+  bg = "#121626",
+  green = "#9CB67D",
+  yellow = "#D6B476",
+  purple = "#DA72A2",
+  orange = "#F3AB59",
+  peanut = "#D29146",
+  red = "#F47171",
+  aqua = "#788AD3",
+  darkblue = "#0D2C4E",
+  dark_red = "#4E0E0E",
 }
 
 local vi_mode_colors = {
